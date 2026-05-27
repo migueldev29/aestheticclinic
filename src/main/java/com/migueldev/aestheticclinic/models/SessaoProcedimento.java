@@ -26,10 +26,11 @@ public class SessaoProcedimento {
 
     public static final String TABLE_NAME = "sessao_procedimento";
     
+    // Renomeado para "id" para que o Spring Data JPA reconheça a propriedade padrão
     @Id
     @Column(name = "id_sessao", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSessao;
+    private Long id;
     
     @Column(name = "data_hora_inicio", nullable = false)
     @NotBlank

@@ -38,7 +38,7 @@ public class UsuarioSistema {
     @Id
     @Column(name = "id_usuario_sistema", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true, nullable = false)

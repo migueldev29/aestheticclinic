@@ -6,7 +6,7 @@ import com.migueldev.aestheticclinic.models.enums.StatusSessaoEnum;
 
 public interface SessaoProcedimentoProjection {
 
-    Long getIdSessao();
+    Long getId();
 
     LocalDateTime getDataHoraInicio();
 

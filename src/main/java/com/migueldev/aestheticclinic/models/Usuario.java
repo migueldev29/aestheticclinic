@@ -3,8 +3,12 @@ package com.migueldev.aestheticclinic.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.migueldev.aestheticclinic.models.enums.SexoUsuarioEnum;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,8 +44,11 @@ public class Usuario {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(name = "sexo", length = 1)
-    private String sexo;
+    // Utiliza enum para representar o sexo do usuário
+    // Armazena o sexo como código numérico (1, 2 ou 3) usando o ordinal do enum
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "sexo", length = 2)
+    private SexoUsuarioEnum sexo;
 
     @Column(name = "telefone", length = 11)
     @Size(min = 10, max = 11)

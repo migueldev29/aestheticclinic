@@ -26,7 +26,7 @@ public class Atendimento {
     @Id
     @Column(name = "id_atendimento", unique = true)
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    private Long idAtendimento;
+    private Long id;
 
     @Column(name = "data_hora", nullable = false)
     @NotBlank

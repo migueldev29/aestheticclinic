@@ -30,7 +30,7 @@ public class Profissional {
     @Id
     @Column(name = "id_profissional", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProfissional;
+    private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true, nullable = false)
@@ -51,4 +51,8 @@ public class Profissional {
     @OneToMany(mappedBy = "profissional")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<SessaoProcedimento> sessoesProcedimentos;
+
+    @OneToOne(mappedBy = "profissional", cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Agenda agenda;
 }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,30 +20,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = Paciente.TABLE_NAME)
+@Table(name = Agenda.TABLE_NAME)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Paciente {
-
-    public static final String TABLE_NAME = "paciente";
+public class Agenda {
+    
+    public static final String TABLE_NAME = "agenda";
 
     @Id
-    @Column(name = "id_paciente", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_agenda", unique = true)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id", unique = true, nullable = false)
-    private Usuario usuario;
+    @OneToOne
+    @JoinColumn(name = "id_profissional")
+    private Profissional profissional;
 
-    @Column(name = "numero_prontuario", length = 50, unique = true)
-    private String numeroProntuario;
-
-    @Column(name = "observacoes_gerais", length = 500)
-    private String observacoesGerais;
-
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "agenda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<SessaoProcedimento> sessoesProcedimentos;
+    private List<HorarioDisponivel> horariosDisponiveis;
 }

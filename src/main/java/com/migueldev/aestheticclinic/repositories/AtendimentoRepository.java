@@ -18,7 +18,7 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 
     List<AtendimentoProjection> findBySessaoProcedimentoProcedimentoNomeContainingIgnoreCase(String nome);
 
-    List<AtendimentoProjection> findBySessaoProcedimentoProfissionalNomeContainingIgnoreCase(String nome);
+    List<AtendimentoProjection> findBySessaoProcedimentoProfissionalUsuarioNomeContainingIgnoreCase(String nome);
 
     List<AtendimentoProjection> findByDataHoraBetween(java.time.LocalDateTime inicio, java.time.LocalDateTime fim);
 

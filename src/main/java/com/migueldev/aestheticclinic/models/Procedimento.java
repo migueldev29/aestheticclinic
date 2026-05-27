@@ -29,7 +29,7 @@ public class Procedimento {
     @Id
     @Column(name = "id_procedimento", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProcedimento;
+    private Long id;
     
     @Column(name = "nome", length = 100, nullable = false)
     @Size(min = 2, max = 100)
